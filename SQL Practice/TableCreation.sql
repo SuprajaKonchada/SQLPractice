@@ -29,3 +29,39 @@ CREATE TABLE OrderDetails (
     Quantity INT,
     UnitPrice DECIMAL(10, 2)
 );
+
+-- Create Employeees table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY IDENTITY(1,1),
+    FullName NVARCHAR(100),
+    ManagerID INT NULL, -- Self-referencing foreign key for manager
+    Position NVARCHAR(50)
+);
+
+-- Create Table for Customers from Region A
+CREATE TABLE Customers_RegionA (
+    CustomerID INT PRIMARY KEY,
+    FullName NVARCHAR(100),
+    Email NVARCHAR(100)
+);
+
+-- Create Table for Customers from Region B
+CREATE TABLE Customers_RegionB (
+    CustomerID INT PRIMARY KEY,
+    FullName NVARCHAR(100),
+    Email NVARCHAR(100)
+);
+
+-- Create Table for All Customers
+CREATE TABLE All_Customers (
+    CustomerID INT PRIMARY KEY,
+    FullName NVARCHAR(100),
+    Email NVARCHAR(100)
+);
+
+-- Create a table with JSON for product specifications and XML for supplier details
+CREATE TABLE ProductInfo (
+    ProductID INT PRIMARY KEY,
+    ProductSpecificationsJSON NVARCHAR(MAX), -- JSON column for specifications
+    SupplierDetailsXML XML                    -- XML column for supplier details
+);
