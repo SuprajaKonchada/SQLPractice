@@ -21,6 +21,14 @@ CREATE UNIQUE NONCLUSTERED INDEX IX_Customers_Email ON Customers (Email);
 -- Query to find a customer by email
 SELECT * FROM Customers WHERE Email = 'suprajakonchada2001@gmail.com';
 
+-- Create a non-clustered index on the LastName column with a covering index
+CREATE NONCLUSTERED INDEX IX_Customers_LastName_Covering 
+ON Customers (LastName)
+INCLUDE (FirstName, Email);
+
+-- Query using the non-clustered index
+SELECT * FROM Customers WHERE LastName = 'Konchada';
+
 Sp_Help 'Orders'
 Sp_HelpIndex 'Orders'
 
